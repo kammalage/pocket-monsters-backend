@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	log.Println("Starting pocket-monsters-backend...")
 	r := mux.NewRouter()
 	r.HandleFunc("/pokedex", PokedexHandler).Methods(http.MethodGet)
 	r.HandleFunc("/", HomeHandler)
@@ -24,6 +25,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func PokedexHandler(w http.ResponseWriter, r *http.Request) {
+	log.Println("PokedexHandler...")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	pokedex, err := pokeapi.Pokedex("kanto")
 	if err != nil {
